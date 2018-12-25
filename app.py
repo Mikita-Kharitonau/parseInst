@@ -1,3 +1,5 @@
+import os
+
 from flask import (
     Flask,
     jsonify,
@@ -31,4 +33,5 @@ def internal_server_error(e):
 
 
 if __name__ == '__main__':
-    app.run()
+    port = int(os.environ.get('PORT', 5000))
+    app.run(port=port)
