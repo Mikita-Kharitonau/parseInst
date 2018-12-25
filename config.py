@@ -10,5 +10,9 @@ HTML_PARSER_CONFIG = {
     "geckodriver_exec_path": os.path.join(
         os.path.dirname(__file__),
         "html_parser/geckodriver/geckodriver"
+    ),
+    "phantomjs_exec_path": os.path.join(
+        os.path.dirname(__file__),
+        "html_parser/phantomjs/phantomjs"
     )
 }

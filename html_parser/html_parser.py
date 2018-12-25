@@ -12,15 +12,15 @@ from flask import (
 def get_parsed_location(post_url, config):
     driver = prepare_driver_with_url(post_url, config)
     try:
-        locaiton_dom = driver.find_element_by_class_name(config['location_html_class'])
+        location_dom = driver.find_element_by_class_name(config['location_html_class'])
         img_dom = driver.find_element_by_class_name(config['img_html_class'])
         try:
-            location_details_url = locaiton_dom.get_attribute("href")
+            location_details_url = location_dom.get_attribute("href")
             lat, lon = get_location_details(location_details_url, config)
             return jsonify(
                 {
                     "id": get_location_id(location_details_url, config),
-                    "place": locaiton_dom.text,
+                    "place": location_dom.text,
                     "location": {
                         "lat": lat,
                         "lon": lon,
@@ -39,11 +39,8 @@ def get_parsed_location(post_url, config):
 
 
 def prepare_driver_with_url(url, config):
-    options = webdriver.FirefoxOptions()
-    options.add_argument('-headless')
-    driver = webdriver.Firefox(
-        executable_path=config['geckodriver_exec_path'],
-        firefox_options=options
+    driver = webdriver.PhantomJS(
+        executable_path=config['geckodriver_exec_path']
     )
     driver.get(url)
     return driver
