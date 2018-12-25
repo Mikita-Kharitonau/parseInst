@@ -7,10 +7,6 @@ HTML_PARSER_CONFIG = {
     "img_html_class": "FFVAD",
     "lat_property_value": "place:location:latitude",
     "lon_property_value": "place:location:longitude",
-    "geckodriver_exec_path": os.path.join(
-        os.path.dirname(__file__),
-        "html_parser/geckodriver/geckodriver"
-    ),
     "phantomjs_exec_path": os.path.join(
         os.path.dirname(__file__),
         "html_parser/phantomjs/phantomjs"
