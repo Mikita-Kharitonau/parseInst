@@ -40,7 +40,7 @@ def get_parsed_location(post_url, config):
 
 def prepare_driver_with_url(url, config):
     driver = webdriver.PhantomJS(
-        executable_path=config['geckodriver_exec_path']
+        executable_path=config['phantomjs_exec_path']
     )
     driver.get(url)
     return driver
