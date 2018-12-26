@@ -27,7 +27,7 @@ returns
         "lat": "56.1",
         "lon": "38.1333"
     },
-    "photoSrc": "https://scontent-frt3-2.cdninstagram.com/vp/efbed530961ac1d4c4764793f13d5565/5CCFE029/t51.2885-15/e35/47690624_370553327035409_470915558100859748_n.jpg?_nc_ht=scontent-frt3-2.cdninstagram.com",
+    "photoSrc": "https://scontent-iad3-1.cdninstagram.com/vp/3305116bc714154433d0e03caff1d0bb/5CA0330A/t51.2885-15/e35/c0.135.1080.1080/s150x150/43076000_254325412094710_3047800879953989757_n.jpg?_nc_ht=scontent-iad3-1.cdninstagram.com",
     "place": "Krasnoarmeysk, Moskovskaya Oblast', Russia"
 }
 ```
@@ -46,3 +46,5 @@ returns
 ```
 
 All requests are made with [Postman](https://www.getpostman.com/).
+
+Yuo can also use https://parse-inst-ui.herokuapp.com/ to send requests.
