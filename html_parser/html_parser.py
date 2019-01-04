@@ -19,9 +19,10 @@ def get_parsed_location(post_url, config):
         return make_response(jsonify({"error": "Can't initialize webdriver"}), 500)
     try:
         location_dom = driver.find_element_by_class_name(config['location_html_class'])
+        img_dom = driver.find_element_by_class_name(config['post_img_html_class'])
         try:
             location_details_url = location_dom.get_attribute('href')
-            lat, lon, location_img_url = get_location_details(location_details_url, config)
+            lat, lon = get_location_details_with_urllib(location_details_url, config)
             return jsonify(
                 {
                     "id": get_location_id(location_details_url, config),
@@ -30,7 +31,7 @@ def get_parsed_location(post_url, config):
                         "lat": lat,
                         "lon": lon,
                     },
-                    "photoSrc": location_img_url
+                    "photoSrc": img_dom.get_attribute("src")
                 }
             )
         except:
@@ -82,7 +83,6 @@ def get_location_details_with_urllib(location_details_url, config):
     soup = BeautifulSoup(html)
     lat = soup.find("meta", property=config['lat_property_value']).get('content', 0)
     lon = soup.find("meta", property=config['lon_property_value']).get('content', 0)
-    # location_img_url = soup.findAll("img", class_=config['location_img_html_class'])[0].get('src', 'No value')
     return lat, lon
 
 
