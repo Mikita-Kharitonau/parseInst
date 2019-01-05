@@ -1,10 +1,9 @@
 import os
+import urllib.parse
 
 from flask import (
     Flask,
     jsonify,
-    request,
-    abort,
     make_response
 )
 from html_parser import get_parsed_location
@@ -14,11 +13,10 @@ from config import HTML_PARSER_CONFIG
 app = Flask(__name__)
 
 
-@app.route('/api/location', methods=['POST'])
-def get_location():
-    if not request.json or not 'post_url' in request.json:
-        abort(400)
-    location = get_parsed_location(request.json['post_url'], HTML_PARSER_CONFIG)
+@app.route('/api/location/<post_url>', methods=['GET'])
+def get_location(post_url):
+    post_url = urllib.parse.unquote(post_url)
+    location = get_parsed_location(post_url, HTML_PARSER_CONFIG)
     return location
 
 

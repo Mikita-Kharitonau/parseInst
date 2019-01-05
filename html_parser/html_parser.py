@@ -37,7 +37,7 @@ def get_parsed_location(post_url, config):
         except:
             return jsonify({"place": "Can't get place info"})
     except common.exceptions.NoSuchElementException:
-        return jsonify({ "place": "No place"})
+        return jsonify({ "place": "No place. Please, check entered post url"})
     except:
         abort(500)
     finally:
